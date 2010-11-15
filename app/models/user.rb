@@ -18,6 +18,15 @@ class User < ActiveRecord::Base
     update_attributes(params) 
   end
   
+  def apply_omniauth(omniauth)
+    self.email = omniauth['user_info']['email'] if email.blank?
+    authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'])
+  end
+
+  def password_required?
+    (authentications.empty? || !password.blank?) && super
+  end
+  
   attr_accessible :username, :email, :password, :password_confirmation, :remember_me
 
 end

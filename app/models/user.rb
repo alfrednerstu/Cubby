@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   
   has_many :authentications
+  
+  validates_presence_of :username
 
   devise :database_authenticatable, :registerable, 
          :recoverable, :rememberable, :trackable, :validatable
@@ -19,7 +21,7 @@ class User < ActiveRecord::Base
   end
   
   def apply_omniauth(omniauth)
-    self.username = omniauth['user_info']['name'] if username.blank?
+    self.username = omniauth['user_info']['nickname'] if username.blank?
     self.email = omniauth['user_info']['email'] if email.blank?
     authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'])
   end
@@ -28,6 +30,6 @@ class User < ActiveRecord::Base
     (authentications.empty? || !password.blank?) && super
   end
   
-  attr_accessible :username, :email, :password, :password_confirmation, :remember_me
+  attr_accessible :username, :email, :password, :remember_me
 
 end

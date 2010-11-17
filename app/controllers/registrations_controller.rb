@@ -4,6 +4,10 @@ class RegistrationsController < Devise::RegistrationsController
     session[:omniauth] = nil unless @user.new_record?
   end
   
+  def edit
+    @authentications = current_user.authentications if current_user
+  end
+  
   private
   
   def build_resource(*args)

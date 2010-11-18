@@ -1,11 +1,12 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.0.1'
+gem 'sinatra'
 gem 'sqlite3-ruby', :require => 'sqlite3'
 
 group :development, :test do
 	gem 'nifty-generators'
-	gem 'mongrel', '1.2.0.pre2'
+	#gem 'mongrel', '1.2.0.pre2'
 end
 
 gem 'devise'

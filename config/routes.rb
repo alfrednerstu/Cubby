@@ -1,6 +1,8 @@
+require 'API_app.rb'
+
 Cubbyhole::Application.routes.draw do
-  
-  match "/api" => APIApp, :anchor => false
+
+  match '/api' => APIApp, :anchor => false
   
   devise_for :users, :controllers => {:registrations => 'registrations'} # skip registrations/sessions?
   devise_scope :user do

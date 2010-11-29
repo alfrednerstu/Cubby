@@ -1,0 +1,17 @@
+= Cubby
+
+Cubby is a 'read it later' app.
+
+Install
+
+  git clone
+  cd cubbyhole
+  bundle
+  rake db:migrate
+  rails s
+
+View at: http://localhost:3000
+
+== Prototype
+
+This is the prototype.

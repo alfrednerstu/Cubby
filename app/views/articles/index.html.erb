@@ -1,0 +1,35 @@
+<% title "Articles" %>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Url</th>
+    <th>Content</th>
+		<th>Username</th>
+		<th>First added by <%= current_user.username %></th>
+		<th>Updated by <%= current_user.username %></th>
+		<th>First added to Cubbyhole</th>
+		<th>Last updated on Cubbyhole</th>
+		<th>(Updated by "admin")</th>
+  </tr>
+  <% for article in @articles %>
+    <tr>
+      <td><%= article.title %></td>
+      <td><%= article.url %></td>
+      <td><%= truncate(article.content, :length => 100, :separator => ' ') %></td>
+			<td><% for user in article.users %>
+			<%= user.username %>
+			<% end %></td>
+			<td><%= article.readinglists.find_by_user_id(current_user).created_at if article.readinglists.find_by_user_id(current_user) %></td>
+			<td><%= article.readinglists.find_by_user_id(current_user).updated_at if article.readinglists.find_by_user_id(current_user) %></td>
+			<td><%= article.created_at %></td>
+			<td><%= article.updated_at %></td>
+			<td><%= article.readinglists.find_by_user_id(3).updated_at if article.readinglists.find_by_user_id(3) %></td>
+      <td><%= link_to "Show", article %></td>
+      <td><%= link_to "Edit", edit_article_path(article) %></td>
+      <td><%= link_to "Destroy", article, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Article", new_article_path %></p>

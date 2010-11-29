@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
   
+  has_many :readinglists, :dependent => :destroy
+  has_many :articles, :through => :readinglists, :order => "readinglists.updated_at DESC"
   has_many :authentications
   
   validates_presence_of :username

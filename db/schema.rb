@@ -10,7 +10,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101112230424) do
+ActiveRecord::Schema.define(:version => 20101122132736) do
+
+  create_table "articles", :force => true do |t|
+    t.string   "title"
+    t.string   "url"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -37,6 +45,13 @@ ActiveRecord::Schema.define(:version => 20101112230424) do
     t.string   "salt"
     t.string   "target"
     t.text     "server_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "readinglists", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "article_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

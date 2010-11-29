@@ -1,7 +1,6 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.0.1'
-gem 'sinatra'
 gem 'sqlite3-ruby', :require => 'sqlite3'
 
 group :development, :test do
@@ -9,9 +8,10 @@ group :development, :test do
 	#gem 'mongrel', '1.2.0.pre2'
 end
 
+gem 'ruby-readability', :require => 'readability'
+
 gem 'devise'
 gem 'oa-oauth', :require => 'omniauth/oauth'
-
 gem 'ruby-openid'
 
 gem 'haml', '>= 3.0.0'
@@ -19,4 +19,8 @@ gem 'haml-rails'
 gem 'hpricot'
 gem 'ruby_parser'
 	
-gem "mocha", :group => :test
+#gem "mocha", :group => :test
+
+gem 'sinatra'
+gem 'sequel'
+gem 'sinatra-sequel'

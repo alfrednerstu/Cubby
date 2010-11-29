@@ -2,6 +2,25 @@
 
 <p><strong>Reading list:</strong></p>
 
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Url</th>
+    <th>Content</th>
+  </tr>
+<% for article in @articles %>
+  <tr>
+    <td><%= article.title %></td>
+    <td><%= article.url %></td>
+
+    <td><%= link_to "Show", article %></td>
+    <td><%= link_to "Destroy", article, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<p><%= link_to "New Article", new_article_path %></p>
+
 <% else %>
 
 <h1>Cubbyhole</h1>
